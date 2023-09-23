@@ -7,8 +7,6 @@ interface IProps {
 }
 
 export default function Table({ heads, rows, className }: IProps) {
-  console.log(heads, rows);
-
   return (
     <div
       className={classNames(

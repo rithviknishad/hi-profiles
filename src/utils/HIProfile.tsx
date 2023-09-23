@@ -65,7 +65,6 @@ export default class HIProfile {
   }
 
   parseHumanName(humanName: fhir4.HumanName | undefined): string {
-    console.log(humanName, this);
     if (!humanName) return "";
 
     return [
@@ -79,7 +78,6 @@ export default class HIProfile {
   }
 
   getAuthorName(author: Author): string {
-    console.log(author, this);
     switch (author.resourceType) {
       case "Patient":
         return this.parseHumanName(author.name?.[0]);
@@ -98,7 +96,9 @@ export default class HIProfile {
     }
   }
 
-  getConceptDisplay(concept: fhir4.CodeableConcept): string {
+  getConceptDisplay(concept: fhir4.CodeableConcept | undefined): string | null {
+    if (!concept) return null;
+
     if (concept.text) return concept.text;
 
     if (concept.coding) {
@@ -131,9 +131,7 @@ export default class HIProfile {
     }
 
     if ("valueCodeableConcept" in observation) {
-      return observation.valueCodeableConcept
-        ? this.getConceptDisplay(observation.valueCodeableConcept)
-        : "";
+      return this.getConceptDisplay(observation.valueCodeableConcept) ?? "";
     }
 
     if ("valueBoolean" in observation) {

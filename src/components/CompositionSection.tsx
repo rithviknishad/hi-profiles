@@ -1,5 +1,6 @@
 import Observations from "./Observations";
 import Immunizations from "./Immunizations";
+import MedicationRequests from "./MedicationRequests";
 
 interface IProps {
   section: fhir4.CompositionSection;
@@ -19,7 +20,6 @@ export default function CompositionSection({ section }: IProps) {
   };
 
   const entries = segregateSectionEntries(section);
-  console.log(entries);
 
   return (
     <div className="mt-6 rounded shadow p-4 pl-6">
@@ -36,6 +36,7 @@ export default function CompositionSection({ section }: IProps) {
       </div>
       <Observations references={entries?.Observation ?? []} />
       <Immunizations references={entries?.Immunization ?? []} />
+      <MedicationRequests references={entries?.MedicationRequest ?? []} />
     </div>
   );
 }
