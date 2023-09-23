@@ -1,5 +1,5 @@
-import React from "react";
 import Observations from "./Observations";
+import Immunizations from "./Immunizations";
 
 interface IProps {
   section: fhir4.CompositionSection;
@@ -35,6 +35,7 @@ export default function CompositionSection({ section }: IProps) {
         </div>
       </div>
       <Observations references={entries?.Observation ?? []} />
+      <Immunizations references={entries?.Immunization ?? []} />
     </div>
   );
 }
