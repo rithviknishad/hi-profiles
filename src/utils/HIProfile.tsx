@@ -77,7 +77,9 @@ export default class HIProfile {
       .trim();
   }
 
-  getAuthorName(author: Author): string {
+  getAuthorName(author: Author | undefined | null): string | null {
+    if (!author) return null;
+
     switch (author.resourceType) {
       case "Patient":
         return this.parseHumanName(author.name?.[0]);

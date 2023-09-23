@@ -3,6 +3,7 @@ import Immunizations from "./Immunizations";
 import MedicationRequests from "./MedicationRequests";
 import Conditions from "./Conditions";
 import AllergyIntollerances from "./AllergyIntollerances";
+import DocumentReferences from "./DocumentReferences";
 
 interface IProps {
   section: fhir4.CompositionSection;
@@ -41,6 +42,7 @@ export default function CompositionSection({ section }: IProps) {
       <MedicationRequests references={entries?.MedicationRequest ?? []} />
       <Conditions references={entries?.Condition ?? []} />
       <AllergyIntollerances references={entries?.AllergyIntolerance ?? []} />
+      <DocumentReferences references={entries?.DocumentReference ?? []} />
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default function Table({ heads, rows, className }: IProps) {
   return (
     <div
       className={classNames(
-        "-mx-4 mt-10 ring-1 ring-gray-300 sm:mx-0 sm:rounded-lg",
+        "-mx-4 mt-10 overflow-x-auto ring-1 ring-gray-300 sm:mx-0 sm:rounded-lg",
         className
       )}
     >
