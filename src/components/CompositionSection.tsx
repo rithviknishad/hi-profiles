@@ -1,6 +1,7 @@
 import Observations from "./Observations";
 import Immunizations from "./Immunizations";
 import MedicationRequests from "./MedicationRequests";
+import Conditions from "./Conditions";
 
 interface IProps {
   section: fhir4.CompositionSection;
@@ -37,6 +38,7 @@ export default function CompositionSection({ section }: IProps) {
       <Observations references={entries?.Observation ?? []} />
       <Immunizations references={entries?.Immunization ?? []} />
       <MedicationRequests references={entries?.MedicationRequest ?? []} />
+      <Conditions references={entries?.Condition ?? []} />
     </div>
   );
 }
