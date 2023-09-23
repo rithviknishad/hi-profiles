@@ -1,5 +1,6 @@
 import { useProfile } from "../contexts/ProfileContext";
 import CompositionHead from "./CompositionHead";
+import CompositionSection from "./CompositionSection";
 import Encounter from "./Encounter";
 
 export default function Composition() {
@@ -10,6 +11,9 @@ export default function Composition() {
     <main className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 rounded shadow">
       <CompositionHead />
       <Encounter className="mt-10" />
+      {composition.section?.map((section, i) => (
+        <CompositionSection key={i} section={section} />
+      ))}
     </main>
   );
 }

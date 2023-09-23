@@ -4,10 +4,15 @@ export function classNames(
   return classes.filter(Boolean).join(" ");
 }
 
-export function formatDate(date: string | number | Date) {
+export function formatDate(date: string | number | Date, includeTime = false) {
   return new Date(date).toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
     year: "numeric",
+    ...(includeTime && {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    }),
   });
 }

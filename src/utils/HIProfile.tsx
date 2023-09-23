@@ -98,6 +98,102 @@ export default class HIProfile {
     }
   }
 
+  getConceptDisplay(concept: fhir4.CodeableConcept): string {
+    if (concept.text) return concept.text;
+
+    if (concept.coding) {
+      for (const coding of concept.coding) {
+        const display = this.getCodingDisplay(coding);
+        if (display) return display;
+      }
+    }
+
+    return "";
+  }
+
+  getCodingDisplay(coding: fhir4.Coding): string {
+    return coding.display ?? coding.code ?? "";
+  }
+
+  getObservationValue(
+    observation: fhir4.Observation | fhir4.ObservationComponent
+  ): string {
+    if ("valueString" in observation) {
+      return observation.valueString ?? "";
+    }
+
+    if ("valueQuantity" in observation) {
+      return (
+        observation.valueQuantity?.value?.toString() +
+        " " +
+        observation.valueQuantity?.unit
+      );
+    }
+
+    if ("valueCodeableConcept" in observation) {
+      return observation.valueCodeableConcept
+        ? this.getConceptDisplay(observation.valueCodeableConcept)
+        : "";
+    }
+
+    if ("valueBoolean" in observation) {
+      return observation.valueBoolean?.toString() ?? "";
+    }
+
+    if ("valueInteger" in observation) {
+      return observation.valueInteger?.toString() ?? "";
+    }
+
+    if ("valueDateTime" in observation) {
+      return observation.valueDateTime?.toString() ?? "";
+    }
+
+    if ("valueTime" in observation) {
+      return observation.valueTime?.toString() ?? "";
+    }
+
+    if ("valueRange" in observation) {
+      return (
+        observation.valueRange?.low?.value?.toString() ??
+        "" + " " + observation.valueRange?.low?.unit ??
+        "" + " - " + observation.valueRange?.high?.value?.toString() ??
+        "" + " " + observation.valueRange?.high?.unit ??
+        ""
+      );
+    }
+
+    if ("valueRatio" in observation) {
+      return (
+        observation.valueRatio?.numerator?.value?.toString() ??
+        "" + " " + observation.valueRatio?.numerator?.unit ??
+        "" + " : " + observation.valueRatio?.denominator?.value?.toString() ??
+        "" + " " + observation.valueRatio?.denominator?.unit ??
+        ""
+      );
+    }
+
+    if ("valueSampledData" in observation) {
+      return (
+        observation.valueSampledData?.origin?.value?.toString() ??
+        "" + " " + observation.valueSampledData?.origin?.unit ??
+        "" + " : " + observation.valueSampledData?.period?.toString() ??
+        "" + " " + observation.valueSampledData?.dimensions?.toString() ??
+        "" + " " + observation.valueSampledData?.data?.toString() ??
+        ""
+      );
+    }
+
+    if ("valuePeriod" in observation) {
+      return (
+        observation.valuePeriod?.start?.toString() ??
+        "" + " " + observation.valuePeriod?.end?.toString() ??
+        ""
+      );
+    }
+
+    return "";
+  }
+
   getResource(id: string | undefined): fhir4.Resource | null {
     if (!id) return null;
 
