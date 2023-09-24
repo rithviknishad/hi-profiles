@@ -7,6 +7,7 @@ import DocumentReferences from "./DocumentReferences";
 import Procedures from "./Procedures";
 import Appointments from "./Appointments";
 import CarePlans from "./CarePlans";
+import DiagnosticReports from "./DiagnosticReports";
 
 interface IProps {
   section: fhir4.CompositionSection;
@@ -49,6 +50,7 @@ export default function CompositionSection({ section }: IProps) {
       <Procedures references={entries?.Procedure ?? []} />
       <Appointments references={entries?.Appointment ?? []} />
       <CarePlans references={entries?.CarePlan ?? []} />
+      <DiagnosticReports references={entries?.DiagnosticReport ?? []} />
     </div>
   );
 }
