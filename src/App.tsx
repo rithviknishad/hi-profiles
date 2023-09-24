@@ -9,7 +9,7 @@ import Profile from "./components/Profile";
 
 export default function App() {
   return (
-    <div>
+    <div className="mt-10 flex flex-col gap-6 w-full">
       {[doc1, doc2, doc3, doc4, doc5, doc6, doc7].map((doc) => (
         <Profile key={doc.id} bundle={doc as fhir4.Bundle} />
       ))}
