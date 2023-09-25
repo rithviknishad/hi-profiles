@@ -8,7 +8,7 @@ import { libInjectCss } from "vite-plugin-lib-inject-css";
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "index.ts"),
+      entry: resolve(__dirname, "src", "index.ts"),
       name: "hi-profiles",
       formats: ["es", "umd"],
       fileName: (format) => `index.${format}.js`,
@@ -30,7 +30,7 @@ export default defineConfig({
     libInjectCss(),
     dts({
       insertTypesEntry: true,
-      include: ["src/**/*.{ts,tsx}", "index.ts"],
+      include: ["src/**/*.{ts,tsx}"],
     }),
   ],
 });
