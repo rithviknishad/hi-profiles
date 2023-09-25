@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite'
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
+import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
     lib: {
-      entry: "index.ts",
+      entry: resolve(__dirname, "index.ts"),
       name: "hi-profiles",
       formats: ["es", "umd"],
       fileName: (format) => `index.${format}.js`,
@@ -23,5 +24,10 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
   },
-  plugins: [react(), dts()],
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,
+    }),
+  ],
 });
