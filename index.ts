@@ -1,3 +1,3 @@
-import HIProfile from "./src/components/Profile";
+import "tailwindcss/tailwind.css";
 
-export default HIProfile;
+export { default as HIProfile } from "./src/components/Profile";
