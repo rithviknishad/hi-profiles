@@ -37,8 +37,8 @@
     "prepare": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "predeploy": "npm run build-storybook",
-    "deploy": "gh-pages -d storybook-static"
+    "predeploy": "npm run build-storybook && touch ./storybook-static/.nojekyll",
+    "deploy": "gh-pages -d storybook-static -t true"
   },
   "dependencies": {
     "react": "^18.2.0",
