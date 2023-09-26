@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { withoutVitePlugins } from "@storybook/builder-vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -7,14 +8,7 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
-    {
-      name: "@storybook/addon-styling",
-      options: {
-        postCss: {
-          implementation: require.resolve("postcss"),
-        },
-      },
-    },
+    "@storybook/addon-styling",
   ],
   framework: {
     name: "@storybook/react-vite",
@@ -22,6 +16,15 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: "tag",
+  },
+  async viteFinal(config) {
+    return {
+      ...config,
+      plugins: await withoutVitePlugins(config.plugins, [
+        "vite:dts",
+        "vite:lib-inject-css",
+      ]),
+    };
   },
 };
 export default config;
