@@ -3,6 +3,7 @@ import HIProfile from "../utils/HIProfile";
 
 interface IProfileContext {
   profile: HIProfile | null;
+  downloadable?: boolean;
 }
 
 const ProfileContext = createContext<IProfileContext>({
@@ -19,12 +20,19 @@ export function useProfile() {
 
 interface IProps {
   bundle: fhir4.Bundle;
+  downloadable?: boolean;
   children: React.ReactNode;
 }
 
-export default function ProfileProvider({ bundle, children }: IProps) {
+export default function ProfileProvider({
+  bundle,
+  downloadable,
+  children,
+}: IProps) {
   return (
-    <ProfileContext.Provider value={{ profile: new HIProfile(bundle) }}>
+    <ProfileContext.Provider
+      value={{ profile: new HIProfile(bundle), downloadable }}
+    >
       {children}
     </ProfileContext.Provider>
   );

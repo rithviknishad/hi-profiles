@@ -1,13 +1,14 @@
 import ProfileProvider from "../contexts/ProfileContext";
 import Composition from "./Composition";
 
-interface IProps {
+export interface IProps {
   bundle: fhir4.Bundle;
+  downloadable?: boolean;
 }
 
-export default function Profile({ bundle }: IProps) {
+export default function Profile({ bundle, downloadable }: IProps) {
   return (
-    <ProfileProvider bundle={bundle}>
+    <ProfileProvider bundle={bundle} downloadable={downloadable}>
       <Composition />
     </ProfileProvider>
   );
