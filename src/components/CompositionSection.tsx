@@ -8,15 +8,21 @@ import Procedures from "./Procedures";
 import Appointments from "./Appointments";
 import CarePlans from "./CarePlans";
 import DiagnosticReports from "./DiagnosticReports";
+import { useProfile } from "../contexts/ProfileContext";
 
 interface IProps {
   section: fhir4.CompositionSection;
 }
 
 export default function CompositionSection({ section }: IProps) {
+  const { profile } = useProfile();
+
   const segregateSectionEntries = (section: fhir4.CompositionSection) => {
     const entries = section.entry?.reduce((acc, entry) => {
-      const resource = entry?.reference?.split("/")?.[0];
+      const resource = profile?.getResource(entry.reference)?.resourceType;
+
+      console.log(resource, entry);
+
       if (resource) {
         acc[resource] = acc[resource] ?? [];
         acc[resource].push(entry);
