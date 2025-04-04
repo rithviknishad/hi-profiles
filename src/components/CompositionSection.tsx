@@ -35,7 +35,7 @@ export default function CompositionSection({ section }: IProps) {
   const entries = segregateSectionEntries(section);
 
   return (
-    <div className="mt-6 rounded shadow p-4 pl-6">
+    <div className="mt-6 rounded-sm shadow-sm p-4 pl-6">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">

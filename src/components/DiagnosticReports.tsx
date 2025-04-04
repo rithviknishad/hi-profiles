@@ -106,7 +106,7 @@ export function DiagnosticReport({ report }: IDiagnosticReportProps) {
                 <li className="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
                   <div className="flex w-0 flex-1 items-center">
                     <HiPaperClip
-                      className="h-5 w-5 flex-shrink-0 text-gray-400"
+                      className="h-5 w-5 shrink-0 text-gray-400"
                       aria-hidden="true"
                     />
                     <div className="ml-4 flex min-w-0 flex-1 gap-2">
@@ -114,13 +114,13 @@ export function DiagnosticReport({ report }: IDiagnosticReportProps) {
                         {attachment.title ?? "Link to document"}
                       </span>
                       {attachment.size && (
-                        <span className="flex-shrink-0 text-gray-400">
+                        <span className="shrink-0 text-gray-400">
                           {attachment.size / 1000} KB
                         </span>
                       )}
                     </div>
                   </div>
-                  <div className="ml-4 flex-shrink-0">
+                  <div className="ml-4 shrink-0">
                     <a
                       href={
                         attachment.url ??

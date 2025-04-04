@@ -10,7 +10,7 @@ export default function Encounter({ className }: IProps) {
   const { encounter } = profile!;
 
   return encounter ? (
-    <div className={classNames("rounded shadow p-4 pl-6", className)}>
+    <div className={classNames("rounded-sm shadow-sm p-4 pl-6", className)}>
       <div className="px-4 sm:px-0">
         <h3 className="text-xl font-semibold leading-7 text-gray-900">
           Encounter Details
