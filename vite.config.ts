@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite'
-import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
+import react from "@vitejs/plugin-react-swc";
 import { resolve } from "path";
-import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,7 +27,6 @@ export default defineConfig({
   base: "/hi-profiles",
   plugins: [
     react(),
-    libInjectCss(),
     dts({
       insertTypesEntry: true,
       include: ["src/**/*.{ts,tsx}"],
