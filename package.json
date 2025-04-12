@@ -1,7 +1,7 @@
 {
   "name": "hi-profiles",
   "private": false,
-  "version": "2.1.0",
+  "version": "2.2.0",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
