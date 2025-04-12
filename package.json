@@ -41,9 +41,11 @@
     "deploy": "gh-pages -d storybook-static -t true"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-icons": "^4.11.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
