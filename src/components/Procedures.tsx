@@ -57,28 +57,28 @@ export default function Procedures({ references }: IProps) {
                     : "")
               )
               .filter(Boolean)
-              .join(", ") ??
+              .join(", ") ||
             "NA"),
         resource.reasonCode &&
           ("Reason: " +
             resource.reasonCode
               ?.map((reason) => profile!.getConceptDisplay(reason))
               .filter(Boolean)
-              .join(", ") ??
+              .join(", ") ||
             "NA"),
         resource.bodySite &&
           ("Body Site: " +
             resource.bodySite
               ?.map((site) => profile!.getConceptDisplay(site))
               .filter(Boolean)
-              .join(", ") ??
+              .join(", ") ||
             "NA"),
         resource.complication &&
           ("Complication: " +
             resource.complication
               ?.map((comp) => profile!.getConceptDisplay(comp))
               .filter(Boolean)
-              .join(", ") ??
+              .join(", ") ||
             "NA"),
       ]
         .filter(Boolean)
